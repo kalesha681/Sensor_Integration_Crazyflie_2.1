@@ -33,6 +33,8 @@
 #include "deckctrl_dfu_memory.h"
 #include "debug.h"
 
+extern void bh1750Init(DeckInfo *info);
+
 #ifdef CONFIG_DEBUG
   #define DECK_CORE_DBG_PRINT(fmt, ...)  DEBUG_PRINT(fmt, ## __VA_ARGS__)
 #else
@@ -68,6 +70,7 @@ void deckInit()
       deck->driver->init(deck);
     }
   }
+  bh1750Init(NULL);
 }
 
 bool deckTest()
